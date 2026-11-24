@@ -1,0 +1,640 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&family=Inter:wght@400;600&family=Permanent+Marker&family=Righteous&family=Anton&family=Cinzel:wght@500&display=swap");
+
+
+:root {
+    /*NEUTRAL (museo, horario, entradas, ubicación, contacto, créditos)*/
+    --negro: #0e0e0f;
+    --grafito: #19191a;
+    --panel: #232325;
+    --borde: #3a3a3d;
+    --texto: #ecebe8;
+    --texto-suave: #a3a29d;
+    --acento: #bdbbb4;         
+    --acento2: #ffffff;        
+    --enlace: #d6d4cd;
+    --sobre-acento: #111111;   
+    --campo: #19191a;          
+    --placeholder: #6f6e6a;
+    --titulo: #ecebe8;         
+    --nav-hover: #ffffff;
+
+    --fuente-titulo: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+    --fuente-lore: "Special Elite", "Courier New", monospace;
+    --fuente-texto: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    --ancho: 1100px;
+    --radio: 4px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;          /* footer siempre abajo */
+    background: var(--negro);
+    color: var(--texto);
+    font-family: var(--fuente-texto);
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+img, iframe {
+    max-width: 100%;
+    display: block;
+}
+
+header {
+    background: var(--grafito);
+    border-bottom: 4px solid var(--acento);
+    padding: 2rem 1.5rem 1rem;
+    text-align: center;
+}
+
+.titulo {
+    margin: 0 0 1rem;
+    font-family: var(--fuente-titulo);
+    font-weight: 400;
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--titulo);
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem 1.2rem;
+    padding: 0.6rem 0;
+}
+
+nav a {
+    padding: 0.3rem 0.2rem;
+    font-family: var(--fuente-titulo);
+    font-size: 1.25rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--texto);
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+nav a:hover, nav a:focus-visible {
+    color: var(--nav-hover);
+    border-bottom-color: var(--acento);
+}
+
+.indice {
+    flex-basis: 100%;
+    margin: 0;
+    font-family: var(--fuente-lore);
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    max-width: var(--ancho);
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+}
+
+main > section, main > div, main > aside {
+    margin-bottom: 3rem;
+}
+
+p {
+    margin: 0 0 1rem;
+}
+
+.subtitulo, #subtitulo, #tema, #descripcion, #galeria {
+    margin: 0 0 1rem;
+    padding-left: 0.8rem;
+    border-left: 6px solid var(--acento);
+    font-family: var(--fuente-titulo);
+    font-weight: 400;
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+h3 {
+    margin: 0 0 0.5rem;
+    font-family: var(--fuente-titulo);
+    font-weight: 400;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    color: var(--enlace);
+}
+
+italics {
+    font-style: italic;
+    color: var(--enlace);
+}
+
+strong {
+    color: var(--enlace);
+    font-weight: 600;
+}
+
+/* Links */
+main a {
+    color: var(--enlace);
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+}
+
+main a:hover,
+main a:focus-visible {
+    color: var(--acento2);
+}
+
+/* Tarjetas (article)  */
+section:has(> article), aside {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Lo que no es tarjeta ocupa todo el ancho de la cuadrícula */
+section:has(> article) > :not(article), aside > :not(article) {
+    grid-column: 1 / -1;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.3rem;
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-top: 4px solid var(--acento);
+    border-radius: var(--radio);
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+article:hover {
+    transform: translateY(-4px);
+    border-top-color: var(--acento2);
+}
+
+article > img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: var(--radio);
+    margin-bottom: 0.6rem;
+    filter: grayscale(0.25) contrast(1.05);
+    transition: filter 0.3s;
+}
+
+article:hover > img {
+    filter: none;
+}
+
+article > a {
+    align-self: flex-start;
+    margin-top: 0.2rem;
+}
+
+/* Videos de YouTube */
+article iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: 2px solid var(--borde);
+    border-radius: var(--radio);
+}
+
+/* Galería (figure) */
+section:has(> figure) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+section:has(> figure) > :not(figure) {
+    grid-column: 1 / -1;
+}
+
+figure {
+    margin: 0;
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    overflow: hidden;
+}
+
+figure img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+figure:hover img {
+    transform: scale(1.04);
+}
+
+figcaption {
+    padding: 0.8rem 1rem;
+    font-family: var(--fuente-lore);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--texto-suave);
+    border-top: 3px solid var(--acento);
+}
+
+/* Tablas (horario y entradas) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--panel);
+    border: 1px solid var(--borde);
+}
+
+th,
+td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--borde);
+}
+
+th {
+    background: var(--acento);
+    color: var(--sobre-acento);
+    font-family: var(--fuente-titulo);
+    font-weight: 400;
+    font-size: 1.25rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+tbody tr:nth-child(even) {
+    background: color-mix(in srgb, var(--texto) 4%, transparent);
+}
+
+tbody tr:hover {
+    background: color-mix(in srgb, var(--acento) 12%, transparent);
+}
+
+td[colspan] {
+    color: var(--acento2);
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Notas */
+.notas {
+    margin: 0 0 0.6rem;
+    padding: 0.7rem 1rem;
+    background: var(--grafito);
+    border-left: 4px solid var(--acento2);
+    font-family: var(--fuente-lore);
+    font-size: 0.92rem;
+    color: var(--texto-suave);
+}
+
+/* Listas */
+ul {
+    padding-left: 1.3rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+li::marker {
+    color: var(--acento);
+}
+
+/* Mapa */
+main > div > iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    max-height: 450px;
+    margin-bottom: 1rem;
+    border: 2px solid var(--borde);
+    border-radius: var(--radio);
+}
+
+/* Formulario de contacto */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 640px;
+}
+
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+label {
+    font-family: var(--fuente-titulo);
+    font-size: 1.15rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--enlace);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    background: var(--campo);
+    color: var(--texto);
+    border: 2px solid var(--borde);
+    border-radius: var(--radio);
+    font: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--placeholder);
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--acento);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--acento) 30%, transparent);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+button {
+    align-self: flex-start;
+    padding: 0.7rem 2rem;
+    background: var(--acento);
+    color: var(--sobre-acento);
+    border: 2px solid var(--acento);
+    border-radius: var(--radio);
+    font-family: var(--fuente-titulo);
+    font-size: 1.3rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+button:hover,
+button:focus-visible {
+    background: transparent;
+    color: var(--enlace);
+}
+
+/* Footer */
+footer {
+    padding: 1.5rem;
+    background: var(--grafito);
+    border-top: 4px solid var(--acento);
+    text-align: center;
+    font-family: var(--fuente-lore);
+    font-size: 0.9rem;
+    color: var(--texto-suave);
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ERA BLURRYFACE */
+.era-blurryface {
+    --negro: #050505;
+    --grafito: #0f0f0f;
+    --panel: #181818;
+    --borde: #2e2e2e;
+    --texto: #e8e4dc;
+    --texto-suave: #9a958b;
+    --acento: #e0262d;
+    --acento2: #e8e4dc;
+    --enlace: #ff4b50;
+    --sobre-acento: #ffffff;
+    --campo: #0f0f0f;
+    --placeholder: #6a665e;
+    --titulo: #e0262d;
+    --nav-hover: #ff4b50;
+    --fuente-titulo: "Permanent Marker", "Bebas Neue", Impact, sans-serif;
+}
+
+.era-blurryface header {
+    background: linear-gradient(180deg, #000 0%, #0f0f0f 100%);
+    border-bottom-width: 6px;
+}
+
+.era-blurryface figure img {
+    filter: grayscale(1) contrast(1.15);
+}
+
+.era-blurryface figure:hover img {
+    filter: none;
+}
+
+/* ERA TRENCH */
+.era-trench {
+    --negro: #0d0d0d;
+    --grafito: #181818;
+    --panel: #222222;
+    --borde: #3a3a3a;
+    --texto: #e9e6dc;
+    --texto-suave: #a9a699;
+    --acento: #fce300;
+    --acento2: #d6232a;
+    --enlace: #fce300;
+    --sobre-acento: #0d0d0d;
+    --titulo: #fce300;
+    --nav-hover: #fce300;
+}
+
+.era-trench header {
+    background:
+        repeating-linear-gradient(90deg, transparent 0 38px, rgba(255, 255, 255, 0.025) 38px 40px),
+        var(--grafito);
+}
+
+/* ERA SCALED AND ICY */
+.era-sai {
+    --negro: #eef0e8;          
+    --grafito: #d3e2df;        
+    --panel: #f8f9f4;          
+    --borde: #c9d2c3;
+    --texto: #2f3b3a;
+    --texto-suave: #55625f;
+    --acento: #e3a3ba;         
+    --acento2: #5f9ea6;        
+    --enlace: #a8456f;
+    --sobre-acento: #2f3b3a;
+    --campo: #fbfcf8;
+    --placeholder: #8a9792;
+    --titulo: #2f3b3a;
+    --nav-hover: #a8456f;
+    --fuente-titulo: "Righteous", "Bebas Neue", Impact, sans-serif;
+    --radio: 12px;
+}
+
+.era-sai header {
+    background: linear-gradient(135deg, #d3e2df 0%, #e1e8d3 60%, #ecd6de 100%);
+    border-bottom: 3px solid var(--acento2);
+}
+
+.era-sai article,
+.era-sai figure,
+.era-sai table {
+    border: 1px solid var(--borde);
+    box-shadow: 4px 4px 0 color-mix(in srgb, var(--acento) 45%, var(--negro));
+}
+
+.era-sai article:hover {
+    border-top-color: var(--acento2);
+}
+
+.era-sai .subtitulo, .era-sai #tema, .era-sai #descripcion, .era-sai #galeria {
+    border-left-color: var(--acento2);
+}
+
+.era-sai figcaption {
+    border-top: 1px solid var(--borde);
+}
+
+.era-sai figure img {
+    filter: saturate(0.85);
+}
+
+.era-sai figure:hover img {
+    filter: none;
+}
+
+.era-sai footer {
+    border-top-color: var(--acento2);
+}
+
+/* ERA CLANCY */
+.era-clancy {
+    --negro: #170f0d;
+    --grafito: #241714;
+    --panel: #2e1f1b;
+    --borde: #4a332d;
+    --texto: #f1e6d8;
+    --texto-suave: #b8a592;
+    --acento: #de8639;
+    --acento2: #e34037;
+    --enlace: #f4a85e;
+    --sobre-acento: #170f0d;
+    --campo: #241714;
+    --placeholder: #7d6a5c;
+    --titulo: #fbe21f;
+    --nav-hover: #fbe21f;
+    --fuente-titulo: "Anton", Impact, "Arial Narrow", sans-serif;
+}
+
+.era-clancy header {
+    background: linear-gradient(0deg, rgba(227, 64, 55, 0.35) 0%, transparent 70%), var(--grafito);
+    border-bottom-color: var(--acento2);
+}
+
+.era-clancy .titulo {
+    text-shadow: 0 0 24px rgba(251, 226, 31, 0.45);
+}
+
+.era-clancy footer {
+    border-top-color: var(--acento2);
+}
+
+/* ERA BREACH */
+.era-breach {
+    --negro: #110605;
+    --grafito: #220d0c;
+    --panel: #2e1311;
+    --borde: #5a2822;
+    --texto: #eadfd2;
+    --texto-suave: #b39a8c;
+    --acento: #df4c3f;
+    --acento2: #e8c9a0;
+    --enlace: #ff7a6b;
+    --sobre-acento: #ffffff;
+    --campo: #220d0c;
+    --placeholder: #7a5c55;
+    --titulo: #e8c9a0;
+    --nav-hover: #df4c3f;
+    --fuente-titulo: "Cinzel", Georgia, "Times New Roman", serif;
+}
+
+.era-breach .titulo {
+    letter-spacing: 0.15em;
+}
+
+.era-breach nav a, .era-breach th, .era-breach button, .era-breach label {
+    letter-spacing: 0.12em;
+}
+
+.era-breach header {
+    background: radial-gradient(ellipse at 50% 120%, #642923 0%, var(--grafito) 70%);
+}
+
+.era-breach figure img {
+    filter: sepia(0.35) saturate(1.2) contrast(1.05);
+}
+
+.era-breach figure:hover img {
+    filter: none;
+}
+
+/* Tarjetas de exposiciones.html */
+article:has(> a[href^="blurryface"]) { --acento: #e0262d; --acento2: #e8e4dc; --enlace: #ff4b50; }
+article:has(> a[href^="trench"])     { --acento: #fce300; --acento2: #d6232a; --enlace: #fce300; }
+article:has(> a[href^="sai"])        { --acento: #e488a7; --acento2: #7ec3cc; --enlace: #f2a3bd; }
+article:has(> a[href^="clancy"])     { --acento: #de8639; --acento2: #e34037; --enlace: #f4a85e; }
+article:has(> a[href^="breach"])     { --acento: #df4c3f; --acento2: #e8c9a0; --enlace: #ff7a6b; }
+
+
+@media (max-width: 600px) {
+    body {
+        font-size: 1rem;
+    }
+
+    main {
+        padding: 1.5rem 1rem;
+    }
+
+    nav {
+        gap: 0.2rem 0.9rem;
+    }
+
+    nav a {
+        font-size: 1.1rem;
+    }
+
+    th,
+    td {
+        padding: 0.6rem 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    figure img {
+        height: 200px;
+    }
+}
