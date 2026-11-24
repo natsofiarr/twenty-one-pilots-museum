@@ -2,7 +2,7 @@
 
 Sitio web de un museo ficticio dedicado al universo de **twenty one pilots**: un recorrido por las eras de la banda (Tyler Joseph y Josh Dun), sus personajes, símbolos y el lore de DEMA.
 
-> Proyecto escolar sin fines de lucro, hecho por una fan. Twenty One Pilots y su material pertenecen a sus respectivos dueños.
+> Proyecto escolar sin fines de lucro. Twenty One Pilots y su material pertenecen a sus respectivos dueños.
 
 🔗 **Ver el sitio:** [natsofiarr.github.io/twenty-one-pilots-museum](https://natsofiarr.github.io/twenty-one-pilots-museum/)
 
